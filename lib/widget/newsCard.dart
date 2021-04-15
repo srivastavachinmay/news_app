@@ -15,13 +15,15 @@ class NewsCard extends StatelessWidget {
           maxLines: 3,
         ),
         leading: Container(
-          width: 50,
-            // height:50,
+            width: 100,
+            height: 100,
             child: article.urlToImage == null
                 ? Image.asset("asset/default.jpeg")
                 : Image.network(
                     article.urlToImage,
                     fit: BoxFit.cover,
+                    errorBuilder: (context, exception, stackTrace) =>
+                        Image.asset("asset/default.jpeg"),
                   )),
       ),
     );
