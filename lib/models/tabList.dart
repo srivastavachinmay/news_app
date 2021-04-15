@@ -5,14 +5,14 @@ class TabList{
   List<Tab> tabList = [
     Tab(
         child: Chip(
-            backgroundColor: Colors.pinkAccent,
+            backgroundColor: Colors.teal,
             label: Text(
               CategoryEnum.values[0]?.toString()?.split('.')?.elementAt(1),
               style: TextStyle(color: Colors.black),
             ))),
     Tab(
         child: Chip(
-            backgroundColor: Colors.pinkAccent,
+            backgroundColor: Colors.greenAccent,
             label: Text(
               CategoryEnum.values[1]?.toString()?.split('.')?.elementAt(1),
               style: TextStyle(color: Colors.black),
@@ -26,7 +26,7 @@ class TabList{
             ))),
     Tab(
         child: Chip(
-            backgroundColor: Colors.pinkAccent,
+            backgroundColor: Colors.redAccent,
             label: Text(
               CategoryEnum.values[3]?.toString()?.split('.')?.elementAt(1),
               style: TextStyle(color: Colors.black),

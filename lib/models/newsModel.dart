@@ -65,6 +65,7 @@ class Article {
         content: json["content"] == null ? null : json["content"],
       );
 
+
   Map<String, dynamic> toJson() => {
         "source": source.toJson(),
         "author": author == null ? null : author,

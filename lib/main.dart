@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/screens/homeScreen.dart';
+import 'package:news_app/screens/newsDetailScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'models/news.dart';
@@ -11,20 +12,23 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return
-      MultiProvider(
+    return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(
-          value: News('business'),
+        ChangeNotifierProvider(
+          create: (_)=>News('business'),
         ),
       ],
-      child:MaterialApp(
+      child: MaterialApp(
         title: 'News App',
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: HomeScreen(),
+        home: SafeArea(child: HomeScreen()),
+        routes: {
+          NewsDetailScreen.routeName:(ctx)=>NewsDetailScreen(),
+        },
       ),
+
     );
   }
 }

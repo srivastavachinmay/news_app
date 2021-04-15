@@ -1,8 +1,5 @@
 import 'dart:ui';
-import 'package:news_app/models/news.dart';
-import 'package:news_app/widget/newsCard.dart';
 import 'package:news_app/widget/newsListView.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/categoryEnum.dart';
 import 'package:news_app/models/tabList.dart';
@@ -16,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   List<Tab> _tabList = TabList().tabList;
   TabController _tabController;
-  bool _isInit = true;
   bool _isLoading = false;
 
   @override
@@ -24,21 +20,6 @@ class _HomeScreenState extends State<HomeScreen>
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: _tabList.length, vsync: this);
-  }
-
-  void didChangeDependencies() {
-    if (_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
-      Provider.of<News>(context).fetchNews("business").then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-    }
-    _isInit = false;
-    super.didChangeDependencies();
   }
 
   @override
