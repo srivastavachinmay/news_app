@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
+import 'package:news_app/models/keys.dart';
+
 
 class News with ChangeNotifier {
   final String cat;
@@ -17,8 +19,9 @@ class News with ChangeNotifier {
   }
 
   Future<List<Article>> fetchNews(String cat) async {
+    const key= Keys.mohan;
     var url =
-        "https://newsapi.org/v2/top-headlines?pageSize=100&sortBy=popularity&category=$cat&country=in&apiKey=b7ab339381f047a9963fba426dd891f7";
+        "https://newsapi.org/v2/top-headlines?pageSize=100&sortBy=popularity&category=$cat&country=in&apiKey=$key";
     try {
       final response = await http.get(Uri.parse(url));
       NewsModel newsModel = NewsModel.fromJson(json.decode(response.body));
